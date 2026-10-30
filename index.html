@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Suraksha Odisha</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;font-family:Arial,sans-serif;
+ background:#f1f5f9;color:#172554;
+}
+header{
+ background:#102b55;color:white;
+ padding:24px 18px;text-align:center;
+}
+header h1{margin:8px 0;font-size:25px}
+header p{margin:5px;color:#dbeafe}
+.lang{
+ float:right;background:white;color:#102b55;
+ border:0;padding:9px 13px;border-radius:8px;
+}
+.container{padding:16px;max-width:600px;margin:auto}
+.hero{
+ background:linear-gradient(135deg,#123b75,#087eaa);
+ color:white;padding:22px;border-radius:16px;
+ text-align:center;margin-bottom:18px;
+}
+.hero h2{margin:5px}
+.card{
+ background:white;padding:18px;border-radius:14px;
+ margin-bottom:15px;
+ box-shadow:0 3px 12px #0000000c;
+}
+.card h3{margin-top:0;color:#123b75}
+input,textarea{
+ width:100%;padding:13px;margin:9px 0;
+ border:1px solid #cbd5e1;border-radius:9px;
+ font-size:16px;
+}
+button.action{
+ width:100%;padding:13px;background:#087eaa;
+ color:white;border:0;border-radius:9px;
+ font-size:16px;font-weight:bold;
+}
+.result{margin-top:12px;font-weight:bold;line-height:1.6}
+.warning{background:#fff7ed;color:#9a3412}
+footer{text-align:center;padding:20px;color:#64748b}
+a{color:#087eaa}
+</style>
+</head>
+<body>
+
+<header>
+<button class="lang" onclick="toggleLang()">ଓଡ଼ିଆ / EN</button>
+<div style="font-size:42px">🛡️</div>
+<h1 id="title">Cyber Suraksha Odisha</h1>
+<p id="subtitle">ଆପଣଙ୍କ ଡିଜିଟାଲ ସୁରକ୍ଷା ଆମର ଲକ୍ଷ୍ୟ</p>
+</header>
+
+<div class="container">
+
+<div class="hero">
+<h2 id="welcome">ସାଇବର ଠକେଇରୁ ସୁରକ୍ଷିତ ରୁହନ୍ତୁ</h2>
+<p id="tagline">Think Before You Click!</p>
+</div>
+
+<div class="card">
+<h3 id="callTitle">📞 ନମ୍ବର ଯାଞ୍ଚ</h3>
+<input id="phone" placeholder="ମୋବାଇଲ୍ ନମ୍ବର ଲେଖନ୍ତୁ">
+<button class="action" onclick="checkPhone()" id="callBtn">ଯାଞ୍ଚ କରନ୍ତୁ</button>
+<div class="result" id="phoneResult"></div>
+</div>
+
+<div class="card">
+<h3 id="smsTitle">📩 SMS ଯାଞ୍ଚ</h3>
+<textarea id="sms" rows="3" placeholder="ସନ୍ଦେହଜନକ SMS ଏଠାରେ Paste କରନ୍ତୁ"></textarea>
+<button class="action" onclick="checkSMS()" id="smsBtn">SMS ଯାଞ୍ଚ କରନ୍ତୁ</button>
+<div class="result" id="smsResult"></div>
+</div>
+
+<div class="card">
+<h3 id="linkTitle">🔗 Link Safety Checker</h3>
+<input id="link" placeholder="Website Link Paste କରନ୍ତୁ">
+<button class="action" onclick="checkLink()" id="linkBtn">Link ଯାଞ୍ଚ କରନ୍ତୁ</button>
+<div class="result" id="linkResult"></div>
+</div>
+
+<div class="card warning">
+<h3 id="otpTitle">🔐 OTP ସୁରକ୍ଷା</h3>
+<p id="otpText">ନିଜ OTP କାହାକୁ ଦିଅନ୍ତୁ ନାହିଁ। ବ୍ୟାଙ୍କ କର୍ମଚାରୀ ମଧ୍ୟ ଆପଣଙ୍କ OTP ମାଗିବା ଉଚିତ୍ ନୁହେଁ।</p>
+</div>
+
+<div class="card">
+<h3 id="helpTitle">🚨 Cyber Crime Help</h3>
+<p id="helpText">ଅନଲାଇନ୍ ଠକେଇର ଶିକାର ହେଲେ ତୁରନ୍ତ 1930 କୁ କଲ୍ କରନ୍ତୁ।</p>
+<p>📞 <a href="tel:1930">1930 Helpline</a></p>
+<p>🌐 <a href="https://cybercrime.gov.in/" target="_blank">National Cyber Crime Portal</a></p>
+</div>
+
+</div>
+
+<footer>
+<p>Cyber Suraksha Odisha 🛡️</p>
+<p>Stay Alert • Stay Safe</p>
+<p>Version 1.0</p>
+</footer>
+
+<script>
+let english=false;
+
+function toggleLang(){
+ english=!english;
+ const words=english?{
+ title:"Cyber Suraksha Odisha",
+ subtitle:"Your Digital Safety Is Our Priority",
+ welcome:"Stay Safe From Cyber Fraud",
+ tagline:"Think Before You Click!",
+ callTitle:"📞 Phone Number Check",
+ callBtn:"Check Number",
+ smsTitle:"📩 SMS Checker",
+ smsBtn:"Check SMS",
+ linkTitle:"🔗 Link Safety Checker",
+ linkBtn:"Check Link",
+ otpTitle:"🔐 OTP Safety",
+ otpText:"Never share your OTP with anyone, including people claiming to be bank employees.",
+ helpTitle:"🚨 Cyber Crime Help",
+ helpText:"If you face online fraud, call 1930 immediately."
+ }:{
+ title:"Cyber Suraksha Odisha",
+ subtitle:"ଆପଣଙ୍କ ଡିଜିଟାଲ ସୁରକ୍ଷା ଆମର ଲକ୍ଷ୍ୟ",
+ welcome:"ସାଇବର ଠକେଇରୁ ସୁରକ୍ଷିତ ରୁହନ୍ତୁ",
+ tagline:"Think Before You Click!",
+ callTitle:"📞 ନମ୍ବର ଯାଞ୍ଚ",
+ callBtn:"ଯାଞ୍ଚ କରନ୍ତୁ",
+ smsTitle:"📩 SMS ଯାଞ୍ଚ",
+ smsBtn:"SMS ଯାଞ୍ଚ କରନ୍ତୁ",
+ linkTitle:"🔗 Link Safety Checker",
+ linkBtn:"Link ଯାଞ୍ଚ କରନ୍ତୁ",
+ otpTitle:"🔐 OTP ସୁରକ୍ଷା",
+ otpText:"ନିଜ OTP କାହାକୁ ଦିଅନ୍ତୁ ନାହିଁ। ବ୍ୟାଙ୍କ କର୍ମଚାରୀ ମଧ୍ୟ ଆପଣଙ୍କ OTP ମାଗିବା ଉଚିତ୍ ନୁହେଁ।",
+ helpTitle:"🚨 Cyber Crime Help",
+ helpText:"ଅନଲାଇନ୍ ଠକେଇର ଶିକାର ହେଲେ ତୁରନ୍ତ 1930 କୁ କଲ୍ କରନ୍ତୁ।"
+ };
+ Object.keys(words).forEach(id=>{
+ document.getElementById(id).innerText=words[id];
+ });
+}
+
+function checkPhone(){
+ let p=document.getElementById("phone").value.trim();
+ let out=document.getElementById("phoneResult");
+ if(!/^[6-9]\d{9}$/.test(p)){
+ out.innerText="⚠️ ଦୟାକରି ଠିକ୍ 10 digit Indian mobile number ଲେଖନ୍ତୁ।";
+ return;
+ }
+ out.innerText="ℹ️ ନମ୍ବରର Format ଠିକ୍ ଅଛି। କିନ୍ତୁ ଏହା ସୁରକ୍ଷିତ କି Fraud ତାହା ଜାଣିବା ପାଇଁ ଅଧିକ ଯାଞ୍ଚ ଆବଶ୍ୟକ।";
+}
+
+function checkSMS(){
+ let s=document.getElementById("sms").value.toLowerCase();
+ let out=document.getElementById("smsResult");
+ if(!s.trim()){
+ out.innerText="ଦୟାକରି SMS Paste କରନ୍ତୁ।";
+ return;
+ }
+ let words=["otp","password","urgent","blocked","click here",
+ "verify","prize","winner","bank account","kyc",
+ "account suspended","upi pin","send money"];
+ let found=words.filter(w=>s.includes(w));
+ if(found.length){
+ out.innerText="⚠️ ସତର୍କ ରୁହନ୍ତୁ! SMS ରେ ସନ୍ଦେହଜନକ ଶବ୍ଦ ମିଳିଛି: "+found.join(", ")+". କୌଣସି Link ଖୋଲନ୍ତୁ ନାହିଁ।";
+ }else{
+ out.innerText="ℹ️ ପରିଚିତ ସନ୍ଦେହଜନକ ଶବ୍ଦ ମିଳିଲା ନାହିଁ। ଏହା SMS ସୁରକ୍ଷିତ ବୋଲି ପ୍ରମାଣ ନୁହେଁ।";
+ }
+}
+
+function checkLink(){
+ let l=document.getElementById("link").value.trim();
+ let out=document.getElementById("linkResult");
+ if(!l){
+ out.innerText="ଦୟାକରି Link Paste କରନ୍ତୁ।";
+ return;
+ }
+ try{
+ let u=new URL(l);
+ let risk=[];
+ if(u.protocol!=="https:")risk.push("HTTPS ନାହିଁ");
+ if(u.username||u.password)risk.push("ସନ୍ଦେହଜନକ Login Information");
+ if(u.hostname.startsWith("xn--")||u.hostname.includes("xn--"))risk.push("ସନ୍ଦେହଜନକ Domain Format");
+ if(risk.length){
+ out.innerText="⚠️ ସତର୍କତା: "+risk.join(", ")+". Link ଖୋଲିବା ପୂର୍ବରୁ ଯାଞ୍ଚ କରନ୍ତୁ।";
+ }else{
+ out.innerText="ℹ️ ପ୍ରାଥମିକ ଯାଞ୍ଚରେ ସ୍ପଷ୍ଟ ସମସ୍ୟା ମିଳିଲା ନାହିଁ। Link ସୁରକ୍ଷିତ ବୋଲି ନିଶ୍ଚିତ ନୁହେଁ।";
+ }
+ }catch(e){
+ out.innerText="⚠️ ଏହା ଠିକ୍ Website Link ନୁହେଁ।";
+ }
+}
+</script>
+</body>
+</html>
