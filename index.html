@@ -149,13 +149,22 @@ function toggleLang(){
 }
 
 function checkPhone(){
- let p=document.getElementById("phone").value.trim();
- let out=document.getElementById("phoneResult");
- if(!/^[6-9]\d{9}$/.test(p)){
- out.innerText="⚠️ ଦୟାକରି ଠିକ୍ 10 digit Indian mobile number ଲେଖନ୍ତୁ।";
- return;
- }
- out.innerText="ℹ️ ନମ୍ବରର Format ଠିକ୍ ଅଛି। କିନ୍ତୁ ଏହା ସୁରକ୍ଷିତ କି Fraud ତାହା ଜାଣିବା ପାଇଁ ଅଧିକ ଯାଞ୍ଚ ଆବଶ୍ୟକ।";
+  let p=document.getElementById("phone").value.trim();
+  let out=document.getElementById("phoneResult");
+
+  if(!/^[6-9]\d{9}$/.test(p)){
+    out.innerText="⚠️ ଦୟାକରି ସଠିକ୍ 10 digit Indian mobile number ଦିଅନ୍ତୁ।";
+    return;
+  }
+
+  const reportedFraudNumbers=[];
+
+  if(reportedFraudNumbers.includes(p)){
+    out.innerText="🚨 ସତର୍କତା! ଏହି ନମ୍ବର ବିଷୟରେ Fraud Report ଅଛି।";
+  }else{
+    out.innerText="ℹ️ ଏହି ନମ୍ବର ଆମ Database ରେ ମିଳିଲା ନାହିଁ। ଏହା ସୁରକ୍ଷିତ ବୋଲି ନିଶ୍ଚିତ ନୁହେଁ।";
+  }
+
 }
 
 function checkSMS(){
